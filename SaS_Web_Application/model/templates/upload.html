@@ -19,7 +19,7 @@
 </div>
 <div class="mt-4">
     {% if inference_img %}
-    <img src='image0.jpg' alt=”hi” width=”500″ height=”600″>
+    <img src='data:image/jpeg;base64,{{inference_img}}' alt=”hi” width=”500″ height=”600″>
     {% else %}
     The inferenced image will be displayed here.
     {% endif %}

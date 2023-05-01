@@ -1,7 +1,7 @@
 import io
 from PIL import Image as im
 import torch
-
+import base64
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 
@@ -40,8 +40,8 @@ class UploadImage(CreateView):
             for img in results.imgs:
                 img_base64 = im.fromarray(img)
                 img_base64.save("C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\SaS_Web_Application\\model\\templates\\image0.jpg", format="JPEG")
-
-            inference_img = results.imgs
+            image = open("C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\SaS_Web_Application\\model\\templates\\image0.jpg", "rb").read()
+            inference_img = base64.b64encode(image).decode()
 
             form = ImageUploadForm()
             context = {
