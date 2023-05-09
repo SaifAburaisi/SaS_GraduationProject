@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Dendect | Home</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      color: rgb(17, 19, 132);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgb(17, 19, 132);
+      color: white;
+      padding: 20px;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: normal;
+
+    }
+
+    .hero-image {
+  background-image: url("assets/teeth.png");
+  background-size: cover;
+  height: 600px;
+  position: relative;
+}
+
+.hero-text {
+  position: absolute;
+  top: 99%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-weight: bold;
+  font-size: 48;
+}
+
+
+    h2 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: normal;
+    
+    }
+
+    p {
+      font-size: 20px;
+      font-weight:lighter;
+
+    }
+
+    .container {
+      max-width: 1200px;
+      margin-top: 110px;
+      padding: 20px;
+    
+    }
+
+    footer {
+      background-color: rgb(17, 19, 132);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+      border-bottom: 2px solid white;
+
+    }
+    .hoverable { 
+        margin-right: 20px;
+
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo-text">Dendect</h1>
+    <nav>
+      <form method="GET" action="{% url 'upload' %}">
+        <a><input type="submit" value="Upload"></a>
+      </form>
+
+      <form method="GET" action="{% url 'login' %}">
+        <a><input type="submit" value="Sign out"></a>
+        </nav>
+  </header>
+  <div class="hero-text">
+    <h2><strong>Welcome to Dendect</strong></h2>
+  </div>
+  <div class="hero-image">
+  </div>
+
+
+   
+
+  <div class="container">
+    <h2>What is Dendect?</h2>
+    <p>Dendect is a web application that allows you to upload your dental x-ray and detect five common problems: filling, crown, bridge, implant, and RCT. Our deep learning algorithm can analyze your x-ray and provide you with an accurate diagnosis.</p>
+
+    <h2>How does it work?</h2>
+    <p>To use Dendect, simply create an account, upload your x-ray, and wait for our algorithm to analyze the image.</p>
+
+    <h2>Get started today</h2>
+    <p>Sign up for Dendect today and start detecting dental problems with ease. It's quick, easy, and free!</p>
+    <a href="#">Sign up now</a>
+  </div>
+
+
+
+
+  <footer>
+    <p>Copyright © 2023 Dendect |
+      <a href="#">
+    </a>
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms of Service</a>
+    </p>
+</footer>
+</body>
+</html>
+
