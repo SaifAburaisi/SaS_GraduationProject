@@ -8,11 +8,15 @@ from django.views.generic.edit import CreateView
 from .models import ImageModel
 from .Forms import ImageUploadForm
 
+def home(request):
+    return render(request, 'home.html')
 
+def login(request):
+    return render(request, 'login.html')
 
 class UploadImage(CreateView):
     model = ImageModel
-    template_name = 'upload.html'
+    template_name = 'final_upload.html'
     fields = ["image"]
 
     def post(self, request, *args, **kwargs):
@@ -35,7 +39,7 @@ class UploadImage(CreateView):
             model = torch.hub.load(path_hubconfig, 'custom',
                                    path_or_model=path_weightfile, source='local')
 
-            results = model(img, size=608)
+            results = model(img, size=640)
             results.render()
             for img in results.imgs:
                 img_base64 = im.fromarray(img)
@@ -48,11 +52,11 @@ class UploadImage(CreateView):
                 "form": form,
                 "inference_img": inference_img
             }
-            return render(request, 'upload.html', context)
+            return render(request, 'final_upload.html', context)
 
         else:
             form = ImageUploadForm()
         context = {
             "form": form
         }
-        return render(request, 'upload.html', context)
+        return render(request, 'final_upload.html', context)
