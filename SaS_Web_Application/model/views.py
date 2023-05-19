@@ -12,7 +12,7 @@ import cv2
 import numpy as np
 import random
 def get_colors(num_classes):
-    random.seed(0)
+    random.seed(1)
 
     # Generate the same colors for each class
     colors = []
@@ -59,7 +59,7 @@ class UploadImage(CreateView):
 
             # Change this to the correct path
             path_hubconfig = "C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\yolov7"
-            path_weightfile = "C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\SaS_Web_Application\\model\\bestone.pt"  # or any custom trained model
+            path_weightfile = "C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\SaS_Web_Application\\model\\best.pt"  # or any custom trained model
 
             model = torch.hub.load(path_hubconfig, 'custom',
                                    path_or_model=path_weightfile, source='local')
