@@ -8,6 +8,31 @@ from django.views.generic.edit import CreateView
 from .models import ImageModel
 from .Forms import ImageUploadForm
 
+import cv2
+import numpy as np
+import random
+def get_colors(num_classes):
+    random.seed(0)
+
+    # Generate the same colors for each class
+    colors = []
+    for i in range(num_classes):
+        colors.append((random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+
+    return colors
+
+def draw_bounding_boxes(image, results):
+    classes = results.names if hasattr(results, 'names') else None
+    colors = get_colors(len(classes)) if classes else None
+    for *xyxy, conf, cls in results.xyxy[0]:  # for each detection
+        label = classes[int(cls)] if classes else str(int(cls))
+        color = colors[int(cls)] if colors else (0, 0, 255)  # red color if no colors
+
+        image = cv2.rectangle(image, (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3])), color, 1)
+
+        image = cv2.putText(image, label, (int(xyxy[0]), int(xyxy[1])-5), cv2.FONT_HERSHEY_TRIPLEX, 0.4, (255, 255, 255), 1)
+    return image
+
 def home(request):
     return render(request, 'home.html')
 
@@ -40,10 +65,10 @@ class UploadImage(CreateView):
                                    path_or_model=path_weightfile, source='local')
 
             results = model(img, size=640)
-            results.render()
-            for img in results.imgs:
-                img_base64 = im.fromarray(img)
-                img_base64.save("C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\SaS_Web_Application\\model\\templates\\image0.jpg", format="JPEG")
+            numpy_img = np.array(img)
+            numpy_img = draw_bounding_boxes(numpy_img, results)
+            img_base64 = im.fromarray(numpy_img)
+            img_base64.save("C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\SaS_Web_Application\\model\\templates\\image0.jpg", format="JPEG")
             image = open("C:\\Users\\User\\Desktop\\stady\\Grad. Project\\SaS_GraduationProject\\SaS_Web_Application\\model\\templates\\image0.jpg", "rb").read()
             inference_img = base64.b64encode(image).decode()
 
