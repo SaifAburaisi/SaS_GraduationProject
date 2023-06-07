@@ -1,141 +1,154 @@
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-  <meta charset="UTF-8">
-  
   <title>Dendect | Home</title>
   <style>
     body {
-      background-color: white;
       font-family: Arial, sans-serif;
-      color: rgb(17, 19, 132);
       margin: 0;
       padding: 0;
-    }
-
-    header {
-      background-color: rgb(17, 19, 132);
-      color: white;
-      padding: 20px;
-      text-align: left;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 36px;
-      font-weight: normal;
-
-    }
-
-    .hero-image {
-  background-image: url("assets/teeth.png");
-  background-size: cover;
-  height: 600px;
-  position: relative;
-}
-
-.hero-text {
-  position: absolute;
-  top: 99%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-weight: bold;
-  font-size: 48;
-}
-
-
-    h2 {
-      margin: 0;
-      font-size: 30px;
-      font-weight: normal;
-    
-    }
-
-    p {
-      font-size: 20px;
-      font-weight:lighter;
-
+      background-image: url("{% static 'elements/Back10.jpg' %}");
     }
 
     .container {
-      max-width: 1200px;
-      margin-top: 110px;
-      padding: 20px;
-    
+      position: relative;
+      background: #fff;
+      height: auto;
+      overflow: hidden;
+      background-image: url("{% static 'elements/Back10.jpg' %}");
     }
 
-    footer {
-      background-color: rgb(17, 19, 132);
-      color: white;
-      padding: 20px;
+    .header {
+
+      padding: 0px;
+      text-align: right;
+    }
+    nav ul {
+      list-style-type: none; /* remove bullet points */
+    }
+    nav ul li {
+      display: inline-block; /* place list items next to each other */
+      margin-right: 20px; /* add some space between items */
+    }
+    nav ul li a {
+      color: #000000; /* white text */
+      text-decoration: none; /* remove underline */
+    }
+
+    nav ul li a:hover {
+      color: #000000; /* slightly darker white when hovered */
+    }
+    .logo {
       text-align: center;
+      margin-top: auto;
+      /*background-image: url("{% static 'elements/Back11.jpg' %}");*/
     }
 
-    a {
-      color: white;
-      text-decoration: none;
+    .logo img {
+      max-width: 30%;
+      height: auto;
     }
 
-    a:hover {
-      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-      border-bottom: 2px solid white;
-
+    .content {
+      display: flex;
+      flex-direction: row;
+      height: 50vh;
+      margin-top: 300px;
+      margin-bottom: 100px;
+      /*background-image: url("{% static 'elements/Back6.jpg' %}");*/
     }
-    .hoverable { 
-        margin-right: 20px;
 
+    .text {
+      flex: 1;
+      padding: 20px;
     }
 
+    .text h2 {
+      margin-bottom: 10px;
+    }
+
+    .video {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .video video {
+      width: 85%;
+      height: 85%;
+    }
+    .learn-more-button {
+      display: block;
+      margin: 20px auto;
+      background-color: #8a2be2;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .learn-more-button:hover {
+      background-color: #6c1fbb;
+    }
   </style>
 </head>
-<body>
-  <header>
-    <h1 class="logo-text">Dendect</h1>
+<header>
+  <div class="header">
     <nav>
-      <form method="GET" action="{% url 'upload' %}">
-        <a><input type="submit" value="Upload"></a>
-      </form>
-
-      <form method="GET" action="{% url 'login' %}">
-        <a><input type="submit" value="Sign out"></a>
-        </nav>
-  </header>
-  <div class="hero-text">
-    <h2><strong>Welcome to Dendect</strong></h2>
+      <ul>
+        <li><a href="{% url 'upload' %}">Upload</a></li>
+        <li><a href="{% url 'login' %}">Sign out</a></li>
+      </ul>
+    </nav>
   </div>
-  <div class="hero-image">
+</header>
+<body>
+<div class="container">
+  <div class="logo">
+    <img src="{% static 'elements/SAS.png' %}" alt="Logo" />
+
   </div>
-
-
-   
-
-  <div class="container">
-    <h2>What is Dendect?</h2>
-    <p>Dendect is a web application that allows you to upload your dental x-ray and detect five common problems: filling, crown, bridge, implant, and RCT. Our deep learning algorithm can analyze your x-ray and provide you with an accurate diagnosis.</p>
-
-    <h2>How does it work?</h2>
-    <p>To use Dendect, simply create an account, upload your x-ray, and wait for our algorithm to analyze the image.</p>
-
-    <h2>Get started today</h2>
-    <p>Sign up for Dendect today and start detecting dental problems with ease. It's quick, easy, and free!</p>
-    <a href="#">Sign up now</a>
+  <button class="learn-more-button" onclick="scrollToContent()">Learn More</button>
+  <div class="content">
+    <div class="text">
+      <h2>What is Dendect?</h2>
+      <p>Dendect is a web application that allows you to upload your dental x-ray and detect five common problems: Conservative(Fillings, Crowns), Bridge, Implant, and RCT. Our deep learning algorithm can analyze your x-ray and provide you with an accurate diagnosis.</p>
+      <h2>How does it work?</h2>
+      <p>To use Dendect, simply create an account, upload your x-ray, and wait for our algorithm to analyze the image.</p>
+      <h2>Get started today</h2>
+      <p>Sign up for Dendect today and start detecting dental problems with ease. It's quick, easy, and free!</p>
+      <a href="#">Sign up now</a>
+    </div>
+    <div class="video">
+      <!-- Replace the iframe source with your video or gif URL -->
+      <video controls loop>
+        <source src="{% static 'elements/Teletubies.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
-
-
-
-
-  <footer>
-    <p>Copyright © 2023 Dendect |
-      <a href="#">
+</div>
+<footer>
+  <p>Copyright © 2023 Dendect |
+    <a href="#">
     </a>
     <a href="#">Privacy Policy</a> |
     <a href="#">Terms of Service</a>
-    </p>
+  </p>
 </footer>
+<script>
+  function scrollToContent() {
+    const contentSection = document.querySelector('.content');
+    window.scrollTo({
+      top: contentSection.offsetTop,
+      behavior: 'smooth'
+    });
+  }
+</script>
 </body>
 </html>
-
