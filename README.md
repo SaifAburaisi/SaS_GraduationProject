@@ -34,7 +34,8 @@ To test our model the following code was used
 
 These are the results of testing the model, showcasing the precision, recall, mAP@ IoU threshold 0.5, and mAP@ IoU threshold 0.5:0.95
 
-![testing results](https://github.com/SaifAburaisi/SaS_GraduationProject/assets/108056202/c4469531-3ba9-44b0-a9b0-3e07a5faa148)
+![testing results](https://github.com/SaifAburaisi/SaS_GraduationProject/assets/108056202/6d70dcfe-9df2-4f12-a86e-3c5b7377ef0f)
+
 
 **The model has achieved a mAP score 90.2%.**
 
