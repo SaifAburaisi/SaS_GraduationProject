@@ -22,7 +22,7 @@ The model was constructed using the PyTorch Frameowork.
 The images now are ready to Train the model.
 
 ## Training
-The annotated dataset were imported from Roboflow and then used to train the model
+The annotated dataset was imported from Roboflow and then used to train the model
 
     %cd /content/yolov7
     !python train.py --workers 8 --device 0 --data /content/yolov7/SaS-4/data.yaml --img-size 608 331 --batch 32 --cfg /content/yolov7/cfg/training/yolov7.yaml --weights /content/yolov7/yolov7_training.pt --epochs 50 --hyp /content/hyp.yaml --adam
